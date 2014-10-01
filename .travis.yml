@@ -24,19 +24,19 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - compiler: "true 1"
+    - cache-id: "arm-linux-gnueabihf"
       env: HOST=arm-linux-gnueabihf PACKAGES="g++-arm-linux-gnueabihf" DEP_OPTS="NO_QT=1" GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat"
-    - compiler: "true 2"
+    - cache-id: "x86_64-unknown-linux-gnu"
       env: HOST=x86_64-unknown-linux-gnu DEP_OPTS="NO_QT=1 NO_WALLET=1 NO_UPNP=1" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat CPPFLAGS=-DDEBUG_LOCKORDER"
-    - compiler: "true 3"
+    - cache-id: "x86_64-unknown-linux-gnu 1"
       env: HOST=x86_64-unknown-linux-gnu RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat"
-    - compiler: "true 4"
+    - cache-id: "i686-pc-linux-gnu"
       env: HOST=i686-pc-linux-gnu PACKAGES="g++-multilib" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat"
-    - compiler: "true 5"
+    - cache-id: "x86_64-apple-darwin11"
       env: HOST=x86_64-apple-darwin11 PACKAGES="gcc-multilib g++-multilib cmake libcap-dev libz-dev libbz2-dev" OSX_SDK=10.7 GOAL="deploy"
-    - compiler: "true 6"
+    - cache-id: "x86_64-w64-mingw32"
       env: HOST=x86_64-w64-mingw32 PACKAGES="nsis gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 binutils-mingw-w64-x86-64 mingw-w64-dev" GOAL="deploy"
-    - compiler: "true 7"
+    - cache-id: "i686-w64-mingw32"
       env: HOST=i686-w64-mingw32 PACKAGES="nsis gcc-mingw-w64-i686 g++-mingw-w64-i686 binutils-mingw-w64-i686 mingw-w64-dev" GOAL="deploy"
 install:
     - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get update; fi
